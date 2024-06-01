@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-hm%ja5&q7w1)vs6(t6+2x7_a$(a*p7m5xec3o5ze5b2*hq*d!a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]  # "*" will allow any different host to host our django application
 
 
 # Application definition
