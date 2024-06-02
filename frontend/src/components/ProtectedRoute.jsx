@@ -4,10 +4,15 @@ import { Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import api from "../api";
 import { REFRESH_TOKEN, ACCESS_TOKEN } from "../constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function ProtectedRoute({ children }) {
   const [isAuthorized, setIsAuthorized] = useState(null);
+
+  //as soon as we load the protected route try to do this
+  useEffect(() => {
+    auth().catch(() => setIsAuthorized(false));
+  }, []);
 
   //refresh the access token for us automatically
   const refreshToken = async () => {
