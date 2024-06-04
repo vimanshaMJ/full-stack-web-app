@@ -19,8 +19,27 @@ function RegisterAndLogout() {
 }
 
 function App() {
-  return;
-  <></>;
+  return (
+    // cannot access the Home component unless you have the access token and it's valid
+
+    <div>
+      <BrowserRouter>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<RegisterAndLogout />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<NotFound />} />
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
