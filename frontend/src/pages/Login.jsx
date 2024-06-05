@@ -1,5 +1,6 @@
 import React from "react";
+import Form from "../components/Form";
 
 export default function Login() {
-  return <div>Login</div>;
+  return <Form route="/api/token/login/" method="login" />;
 }
