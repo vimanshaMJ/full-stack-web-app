@@ -12,8 +12,27 @@ export default function Form({ route, method }) {
 
   const name = method === "login" ? "Login" : "Register";
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    setLoading(true); // wen submit the form first thing is setLoading=true
     event.preventDefault();
+
+    //atempt to send a request to whatever root.Either gonna try to login or register
+    try {
+      const res = await api.post(route, { username, password });
+      if (method == "login") {
+        // if there's no errors check if the method is login, get the access & refresh token and set them
+
+        localStorage.setItem(ACCESS_TOKEN, res.data.access);
+        localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+        navigate("/");
+      } else {
+        navigate("/login"); // if it wasn't login, it must have been register. so no tokens need to set
+      }
+    } catch (error) {
+      alert(error); // if error occurs it'll be handled here in the catch
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
