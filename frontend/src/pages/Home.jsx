@@ -27,5 +27,17 @@ export default function Home() {
       .catch((err) => alert.err);
   };
 
+  //detele notes
+  const deleteNote = (id) => {
+    api
+      .delete(`/api/notes/delete/${id}/`)
+      .then((res) => {
+        if (res.status === 204) alert("Note Deleted!");
+        else alert("Failed to delete note.");
+      })
+      .catch((err) => alert(err));
+    getNote(); // update the screen by removing the notes when recieve the new notes from backend
+  };
+
   return <div>Home</div>;
 }
