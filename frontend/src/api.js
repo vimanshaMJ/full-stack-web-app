@@ -4,8 +4,10 @@
 import axios from "axios";
 import { ACCESS_TOKEN } from "./constants";
 
+const apiURL = "/choreo-apis/djangoreactwebapp/backend/v1";
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL, //import anything that specified inside an environment file
+  baseURL: import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiURL, //import anything that specified inside an environment file
 });
 
 api.interceptors.request.use(
