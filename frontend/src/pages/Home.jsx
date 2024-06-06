@@ -39,5 +39,18 @@ export default function Home() {
     getNote(); // update the screen by removing the notes when recieve the new notes from backend
   };
 
+  //create notes
+  const createNote = (e) => {
+    e.preventDefault();
+    api
+      .post("/api/notes/", { content, title })
+      .then((res) => {
+        if (res.status === 201) alert("Note Created!");
+        else alert("Failed to create.");
+      })
+      .catch((err) => alert(err));
+    getNote();
+  };
+
   return <div>Home</div>;
 }
