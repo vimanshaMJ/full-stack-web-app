@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import api from "../api";
+import Note from "../components/Note";
 
 export default function Home() {
   //need to keep track of all notes we already grabbed from the server
@@ -55,12 +56,18 @@ export default function Home() {
   return (
     <div>
       <div>
-        <h1>Notes</h1>
+        <h2>Notes</h2>
+        {notes.map((note) => (
+          <Note note={note} onDelete={deleteNote} key={note.id} />
+        ))}
       </div>
+
       <h2>Create a Note</h2>
+
       <form onSubmit={createNote}>
         <label htmlFor="title">Title:</label>
         <br />
+
         <input
           type="text"
           id="title"
@@ -69,8 +76,10 @@ export default function Home() {
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
+
         <label htmlFor="content">Content:</label>
         <br />
+
         <textarea
           name="content"
           id="content"
@@ -79,6 +88,7 @@ export default function Home() {
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
         <br />
+
         <input type="submit" value="Submit" />
       </form>
     </div>
