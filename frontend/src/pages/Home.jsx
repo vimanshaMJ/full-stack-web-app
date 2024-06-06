@@ -10,5 +10,22 @@ export default function Home() {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
 
+  //call getNote function as soon as we visit the page
+  useEffect(() => {
+    getNote();
+  }, []);
+
+  //functions that will send requests
+  const getNote = () => {
+    api
+      .get("/api/notes/")
+      .then((res) => res.data)
+      .then((data) => {
+        setNotes(data);
+        console.log(data);
+      })
+      .catch((err) => alert.err);
+  };
+
   return <div>Home</div>;
 }
