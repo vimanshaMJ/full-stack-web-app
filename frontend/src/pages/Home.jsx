@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import api from "../api";
 import Note from "../components/Note";
+import "../styles/Home.css";
 
 export default function Home() {
   //need to keep track of all notes we already grabbed from the server
