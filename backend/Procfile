@@ -1,0 +1,5 @@
+<!-- this is gonna specify the command to start executing our application -->
+
+web: python manage.py runserver 0.0.0.0:8000
+
+<!-- 0.0.0.0 means run on anu origin or on the public IP address of the server we execute  -->

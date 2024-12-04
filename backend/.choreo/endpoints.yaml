@@ -1,0 +1,11 @@
+# endpoints that we wanna deploy
+
+version: 0.1
+
+# basic configuration that choreo is gonna look for when we're deploying a rest API
+endpoints:
+  - name: "REST API"
+    port: 8000 #port of Django API
+    type: REST
+    networkVisibility: Public
+    context: /
